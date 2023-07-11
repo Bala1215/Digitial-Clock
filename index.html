@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <link rel="stylesheet" href="style.css"/>
+  
+</head>
+<body>
+    <div id="clock">
+      hello
+    </div>
+    <script type="text/javascript">
+        function displayClock(){
+            var date = new Date();
+            
+            var hour = date.getHours();
+            var min = date.getMinutes();
+            var sec = date.getSeconds();
+            var session = " AM ";
+
+            if(hour==0)
+                hour=12;
+            else if(hour > 12){
+                hour = hour - 12;
+                session=" PM ";
+            }
+            else if(hour==12)
+                session=" PM ";
+
+            
+            hour = (hour<10) ? "0"+hour : hour;
+            min  = (min<10) ? "0"+min : min;
+            sec  = (sec<10) ? "0"+sec : sec;               
+            
+            var time  = document.getElementById("clock");
+            time.innerHTML = hour + " : " + min + " : " + sec +"   "+session;
+            console.log(time);
+
+            
+            
+            setTimeout(displayClock,1000);
+            //1000 miliseconds = 1 second
+            //for each second, clock should get updated, that's why setTimeout()is used.
+            }
+            
+            displayClock();
+    </script>
+</body>
+</html>
